@@ -18,7 +18,7 @@ logging.info("🔁 Loading data...")
 try:
     df = joblib.load('df_cleaned.pkl')
     cosine_sim = joblib.load('cosine_sim.pkl')
-    bert_embeddings = np.load('bert_embeddings.npy')
+    bert_embeddings = joblib.load('bert_embeddings.pkl')
     logging.info("✅ Data loaded successfully.")
 except Exception as e:
     logging.error("❌ Failed to load required files: %s", str(e))
