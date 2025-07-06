@@ -4,3 +4,5 @@ pandas
 nltk
 scikit-learn
 joblib
+sentence-transformers
+fpdf
