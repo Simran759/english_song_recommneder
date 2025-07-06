@@ -8,7 +8,7 @@ from io import BytesIO
 
 # ---------- Step 1: Preprocessing ----------
 def run_preprocessing_if_needed():
-    required_files = ["df_cleaned.pkl", "tfidf_matrix.pkl", "cosine_sim.pkl"]
+    required_files = ["df_cleaned.pkl", "tfidf_matrix.pkl", "cosine_sim.pkl","bert_embeddings.npy"]
     if not all(os.path.exists(file) for file in required_files):
         st.info("🔄 Preparing your music recommendations...")
         try:
