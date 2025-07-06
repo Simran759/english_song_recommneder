@@ -178,7 +178,7 @@ cython_debug/
 preprocess.log
 recommend.log
 nltk_data
-.*pkl
+*.pkl
 # app files
 cosine_sim.pkl
 df_cleaned.pkl
