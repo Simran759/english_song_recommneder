@@ -6,9 +6,12 @@ import pandas as pd
 from fpdf import FPDF
 from io import BytesIO
 
+# 🔧 Must be FIRST Streamlit command
+st.set_page_config(page_title="🎧 Song Recommender", page_icon="🎵", layout="wide")
+
 # ---------- Step 1: Preprocessing ----------
 def run_preprocessing_if_needed():
-    required_files = ["df_cleaned.pkl", "tfidf_matrix.pkl", "cosine_sim.pkl","bert_embeddings.pkl"]
+    required_files = ["df_cleaned.pkl", "tfidf_matrix.pkl", "cosine_sim.pkl", "bert_embeddings.pkl"]
     if not all(os.path.exists(file) for file in required_files):
         st.info("🔄 Preparing your music recommendations...")
         try:
@@ -30,6 +33,7 @@ def run_preprocessing_if_needed():
 
 run_preprocessing_if_needed()
 
+
 # ---------- Step 2: Load Logic ----------
 try:
     from recommend import df, recommend_songs
@@ -37,8 +41,8 @@ except Exception as e:
     st.error(f"❌ Error loading song data: {e}")
     st.stop()
 
-# ---------- Step 3: App Layout ----------
-st.set_page_config(page_title="🎧 Song Recommender", page_icon="🎵", layout="wide")
+# # ---------- Step 3: App Layout ----------
+# st.set_page_config(page_title="🎧 Song Recommender", page_icon="🎵", layout="wide")
 
 # Sidebar
 with st.sidebar:
