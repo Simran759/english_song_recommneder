@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import subprocess
+import sys  # ✅ to get current Python interpreter
 
 # Run preprocessing if needed
 def run_preprocessing_if_needed():
@@ -9,7 +10,12 @@ def run_preprocessing_if_needed():
         st.info("🔄 Preprocessing required. Please wait...")
         try:
             with st.spinner("Running preprocessing..."):
-                result = subprocess.run(["python", "preprocess.py"], check=True, capture_output=True, text=True)
+                result = subprocess.run(
+                    [sys.executable, "preprocess.py"],  # ✅ use correct Python
+                    check=True,
+                    capture_output=True,
+                    text=True
+                )
                 st.success("✅ Preprocessing completed successfully!")
                 st.text(result.stdout)
         except subprocess.CalledProcessError as e:
